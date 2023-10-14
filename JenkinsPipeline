@@ -1,0 +1,15 @@
+pipeline {
+  agent any 
+    stages {
+      stage {
+        steps ('checkout') {
+	  git credentialsId: 'pavan', url: 'https://github.com/babupavan/maven-application.git'
+	}
+      }
+      stage {
+        steps ('Build') {
+	  sh 'mvn package'
+	}
+      }
+    }
+}
